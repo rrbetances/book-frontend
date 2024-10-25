@@ -1,0 +1,70 @@
+<div class="container">
+    <h1 class="mt-3">Details Book</h1>
+
+    <ng-container *ngIf="model">
+    <form>
+        <div class="mt-2 mb-5">
+            <div class="mt-3">
+                <label for="title" class="fom-label">Title</label>
+                <input 
+                    readonly
+                    type="text" 
+                    id="title" 
+                    name="title" 
+                    class="form-control"
+                    [(ngModel)]="model.title">
+            </div>
+
+            <div class="mt-3">
+                <label for="description" class="fom-label">Description</label>
+                <input 
+                    readonly
+                    type="text" 
+                    id="description" 
+                    name="description" 
+                    class="form-control"
+                    [(ngModel)]="model.description">
+            </div>
+
+            <div class="mt-3">
+                <label for="excerpt" class="fom-label"></label>
+                <textarea 
+                    readonly
+                    rows="5"
+                    type="text" 
+                    id="excerpt" 
+                    name="excerpt" 
+                    class="form-control"
+                    [(ngModel)]="model.excerpt"></textarea>
+            </div>
+
+            <div class="mt-3">
+                <label for="publishedDate" class="fom-label">Pubished Date</label>
+                <input 
+                    readonly
+                    type="date" 
+                    id="publishedDate" 
+                    name="publishedDate" 
+                    class="form-control"
+                    value = {{model.publishDate}}
+                    [ngModel]="model.publishDate | date: 'yyy-MM-dd'"
+                    (ngModelChange)="model.publishDate = $event">
+            </div>
+
+            <div class="mt-3">
+                <label for="pageCount" class="fom-label">Page Count</label>
+                <input 
+                    readonly
+                    type="text" 
+                    id="pageCount" 
+                    name="pageCount" 
+                    class="form-control"
+                    [(ngModel)]="model.pageCount">
+            </div>
+            <div class="mt-3">
+                <button (click)="onBack()" class="btn btn-primary">Back</button>
+            </div>
+        </div>
+    </form>
+</ng-container>
+</div>

@@ -1,0 +1,39 @@
+<div class="container">
+    <h1 class="mt-2">Book list</h1>
+
+        <div class="d-flex justify-content-end mt-3">
+            <a [routerLink]="['add']" class="btn btn-primary">Add Book</a>
+        </div>
+        <div class="d-flex justify-content-end mt-3">
+            <a [routerLink]="['bookById']" class="btn btn-primary">Get book by id</a>
+        </div>
+
+    <ng-container *ngIf="books$ | async as books">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Page Count</th>
+                    <th>PublishDate</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let book of books">
+                    <td>{{book.title}}</td>
+                    <td>{{book.description}}</td>
+                    <td>{{book.pageCount}}</td>
+                    <td>{{book.publishDate}}</td>
+                    <td>
+                        <a class="btn btn-light" [routerLink]="['details/', book.id]">Details</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-light" [routerLink]="['edit/', book.id]">Edit</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </ng-container>
+</div>
