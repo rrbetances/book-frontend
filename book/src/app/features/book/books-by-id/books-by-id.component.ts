@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { BookService } from '../services/book.service';
 import { Book } from '../models/book.model';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-books-by-id',
@@ -14,7 +15,7 @@ export class BooksByIdComponent {
   book$?: Observable<Book>;
   idFilter: number | null = null;
 
-  constructor(private bookService: BookService, private toastr: ToastrService){}
+  constructor(private bookService: BookService, private toastr: ToastrService, private router: Router){}
 
   ngOnInit(): void {
   }
@@ -28,5 +29,8 @@ export class BooksByIdComponent {
           this.toastr.error('Error geting the book');
         }
       })
+  }
+  onBack(){
+    this.router.navigate(['']);
   }
 }
